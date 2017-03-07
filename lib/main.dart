@@ -76,11 +76,39 @@ class _MyHomePageState extends State<MyHomePage> {
           title: new Text(config.title),
           actions: [
             new IconButton(
-              icon: new Icon(_isFav? Icons.favorite: Icons.favorite_border),
+              icon: new Icon(_isFav ? Icons.favorite : Icons.favorite_border),
               onPressed: _toggleFav,
             ),
           ]),
-      body: new Center(),
+      body: new Column(
+        children: [
+          new Padding(
+            padding: new EdgeInsets.all(5.0),
+            child: new Card(
+              child: new Column(
+                children: [
+                  new ListItem(
+                    leading: new Icon(Icons.restaurant_menu,
+                        color: Theme.of(context).primaryColor),
+                    title: new Text('1625 Charleston Road'),
+                    subtitle: new Text('Mountain View, CA 94043'),
+                  ),
+                  new ListItem(
+                    leading: new Icon(Icons.contact_phone,
+                        color: Theme.of(context).primaryColor),
+                    title: new Text('(408) 555 1212'),
+                  ),
+                  new ListItem(
+                    leading: new Icon(Icons.contact_mail,
+                        color: Theme.of(context).primaryColor),
+                    title: new Text('costa@google.com'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
