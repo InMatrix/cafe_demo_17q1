@@ -68,6 +68,36 @@ class _MyHomePageState extends State<MyHomePage> {
     // build methods fast, so that you can just rebuild anything that
     // needs updating rather than having to individually change
     // instances of widgets.
+
+    String dummyReview =
+        'Review Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta consectetur nisl. Sed at vehicula justo. Nulla ac fermentum lorem. Etiam et auctor ligula, vel tincidunt felis.';
+
+    // populate reviews
+    var reviewList = [];
+    for (var i = 0; i < 10; i++) {
+      reviewList.add(new Text(dummyReview));
+      reviewList.add(new Divider());
+    }
+
+    Container reviewSection = new Container(
+        padding: new EdgeInsets.all(15.0),
+        child: new Column(
+            children: [
+              new Text(dummyReview),
+              new Divider(),
+              new Text(dummyReview),
+              new Divider(),
+              new Text(dummyReview),
+              new Divider(),
+              new Text(dummyReview),
+              new Divider(),
+              new Text(dummyReview),
+              new Divider(),
+              new Text(dummyReview),
+            ],
+        ),
+    );
+
     return new Scaffold(
       appBar: new AppBar(
           // Here we take the value from the MyHomePage object that
@@ -80,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: _toggleFav,
             ),
           ]),
-      body: new Column(
+      body: new ListView(
         children: [
           new Padding(
             padding: new EdgeInsets.all(5.0),
@@ -108,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          reviewSection,
         ],
       ),
     );
