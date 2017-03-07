@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: new Text('1625 Charleston Road'),
                     subtitle: new Text('Mountain View, CA 94043'),
                   ),
+                  new Divider(),
                   new ListItem(
                     leading: new Icon(Icons.contact_phone,
                         color: Theme.of(context).primaryColor),
