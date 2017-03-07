@@ -27,6 +27,41 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class ReviewItem extends StatefulWidget {
+  @override
+  _ReviewItemState createState() => new _ReviewItemState();
+}
+
+class _ReviewItemState extends State<ReviewItem> {
+  String dummyReview =
+      'Review Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta consectetur nisl. Sed at vehicula justo. Nulla ac fermentum lorem. Etiam et auctor ligula, vel tincidunt felis.';
+
+  bool _isHelpful = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Column(
+      children: [
+        new Text(dummyReview),
+        new Row(
+          children: [
+            new Checkbox(
+              value: _isHelpful,
+                onChanged: (bool newValue) {
+                  setState(() {
+                    _isHelpful = newValue;
+                  });
+                },
+            ),
+            new Text('I found this review helpful'),
+          ],
+        ),
+        new Divider(),
+      ],
+    );
+  }
+}
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -69,33 +104,18 @@ class _MyHomePageState extends State<MyHomePage> {
     // needs updating rather than having to individually change
     // instances of widgets.
 
-    String dummyReview =
-        'Review Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta consectetur nisl. Sed at vehicula justo. Nulla ac fermentum lorem. Etiam et auctor ligula, vel tincidunt felis.';
 
     // populate reviews
     var reviewList = [];
     for (var i = 0; i < 10; i++) {
-      reviewList.add(new Text(dummyReview));
-      reviewList.add(new Divider());
+      reviewList.add(new ReviewItem());
     }
 
     Container reviewSection = new Container(
-        padding: new EdgeInsets.all(15.0),
-        child: new Column(
-            children: [
-              new Text(dummyReview),
-              new Divider(),
-              new Text(dummyReview),
-              new Divider(),
-              new Text(dummyReview),
-              new Divider(),
-              new Text(dummyReview),
-              new Divider(),
-              new Text(dummyReview),
-              new Divider(),
-              new Text(dummyReview),
-            ],
-        ),
+      padding: new EdgeInsets.all(15.0),
+      child: new Column(
+        children: reviewList,
+      ),
     );
 
     return new Scaffold(
